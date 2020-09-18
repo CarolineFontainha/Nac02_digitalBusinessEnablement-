@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:include="_template :: head">
+		<meta charset="UTF-8">
+	</head>
+	
+	<body>
+		<h1>Equipe</h1>
+		
+		<nav th:include="_template :: menu('team')"></nav>
+		
+		<a href="/user/new" class="btn-sm btn-primary">
+			<span class="material-icons">add</span>
+		</a>
+		
+		<div class="content">		
+			<span class="alert" th:if="${message != null}" th:text="${message}"></span>
+			
+			<div class="user" th:each="user : ${users}">
+			
+				<img alt="Avatar do usuário" src="https://avatars2.githubusercontent.com/u/32346751?s=460&u=ccd29523c1c75aa3822afa91919fcc0afc5c4edb&v=4" class="avatar">
+				
+				<div class="user-info">
+					<h4 th:text="${user.name}"></h4>
+					<p th:text="${user.email}"></p>
+				</div>
+				
+				<div class="user-action">
+					<a th:href="${'/user/' + user.id}">
+						<span class="material-icons yellow">create</span>
+					</a>
+					<a th:href="${'/user/delete/' + user.id}">
+						<span class="material-icons red">delete</span>
+					</a>
+				</div>				
+			</div>		
+		</div>
+	</body>
+</html>
