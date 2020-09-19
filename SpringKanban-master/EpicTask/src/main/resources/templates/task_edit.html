@@ -8,13 +8,14 @@
 	<body>
 	
 		<div class="content">
-			<h2>Novo usuário</h2>
-			<form action="/user" method="POST" th:object="${user}">
+			<h2>Editar usuário</h2>
+			<form action="/user/update" method="POST" th:object="${user}">
+				<input type="hidden" th:field="*{id}" >
 				<input 
 					name="name" 
 					type="text" 
-					placeholder="Nome Completo"
-					value="Arthur Pereira Machado"
+					placeholder="Nome Completo" 
+					th:field="*{name}"
 					th:classappend="${#fields.hasErrors('name')} ? invalid"
 				/>
 				<span th:errors="*{name}"></span>
@@ -22,18 +23,11 @@
 				<input 
 					name="email" 
 					type="text" 
-					placeholder="E-mail"
+					placeholder="E-mail" 
+					th:field="*{email}"
 					th:classappend="${#fields.hasErrors('email')} ? invalid"
 				/>
 				<span th:errors="*{email}"></span>
-				
-				<input 
-					name="pass" 
-					type="password" 
-					placeholder="Senha" 
-					th:classappend="${#fields.hasErrors('pass')} ? invalid"
-				/>
-				<span th:errors="*{pass}"></span>
 				
 				<div class="actions">
 					<a href="/user" class="btn">Cancelar</a>
