@@ -72,6 +72,6 @@ public class TaskController {
 	public String removerTask(@PathVariable Long id, RedirectAttributes attribute) {
 		repository.deleteById(id);
 		attribute.addFlashAttribute("message", "A Task foi removida com sucesso");
-		return "redirct:/task";
+		return "redirect:/task";
 	}
 }
